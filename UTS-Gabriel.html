@@ -3,28 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <title>UTS PLATFORM</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="container">
-    <h2 class="text-center">Profil Mahasiswa</h2>
-    <ul class="nav-tabs" id="myTab">
-        <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#beranda">Beranda</button>
-        </li>
-        <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tentang">Tentang</button>
-        </li>
-        <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#galeri">Galeri</button>
-        </li>
-        <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan">Pendidikan</button>
-        </li>
-        <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tugas">Tugas</button>
-        </li>
-    </ul>
+<body class="container mt-4">
 
-    <div class="tab-content">
-        
+<h2 class="text-center mb-4">Profil Mahasiswa</h2>
+
+<nav class="nav nav-pills nav-fill">
+  <a class="nav-link active" data-bs-toggle="tab" href="#beranda">Beranda</a>
+  <a class="nav-link" data-bs-toggle="tab" href="#tentang">Tentang</a>
+  <a class="nav-link" data-bs-toggle="tab" href="#galeri">Galeri</a>
+  <a class="nav-link" data-bs-toggle="tab" href="#pendidikan">Pendidikan</a>
+  <a class="nav-link" data-bs-toggle="tab" href="#tugas">Tugas</a>
+</nav>
+
+<div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="beranda">
+        <div class="text-center">
+            <img src="https://otakotaku.com/asset/img/character/2015/12/hyoudou-issei.jpg" class="rounded-circle mb-3">
+            <h4>Gabriel Yanuar Pratama</h4>
+            <p>245314028</p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane fade" id="tentang">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p>Halo! Saya Gabriel.</p>
+
+            <p>
+            Seorang mahasiswa yang sedang belajar banyak hal, mulai dari pemrograman,
+            analisis algoritma, sampai mencoba memahami hidup (dan terkadang
+            overthinking tentangnya juga). Saat ini saya cukup sering berkutat dengan
+            Python, Java, data analysis, dan berbagai tugas kuliah yang kadang lebih
+            menantang dari boss fight di game.
+            </p>
+
+            <p>
+            Saya tipe orang yang suka memahami sesuatu secara detail dan langkah demi
+            langkah. Menurut saya, kalau konsepnya sudah paham, sisanya tinggal praktik
+            dan eksplorasi.
+            </p>
+
+            <p>
+            Di luar coding, saya juga suka bermain gitar, merakit model kit, dan
+            memelihara dua sugar glider yang kadang lebih aktif dari saya saat
+            deadline mendekat.
+            </p>
+
+            <p>Singkatnya:</p>
+
+            <ul>
+                <li>Mahasiswa yang suka belajar hal teknis dan analitis</li>
+                <li>Programmer yang masih terus belajar</li>
+                <li>Gitaris santai</li>
+                <li>Owner dari dua sugar glider</li>
+            </ul>
+
+            <p>
+            Jika kamu membaca ini, kemungkinan besar kamu sedang melihat website yang
+            saya buat sendiri. Kalau ada bug… ya itu fitur yang belum sempat saya
+            dokumentasikan.
+            </p>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
