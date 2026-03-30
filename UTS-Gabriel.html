@@ -121,6 +121,261 @@
             </div>
         </div>
     </div>
+    <div class="tab-pane fade" id="pendidikan">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tahun</th>
+                    <th>Sekolah</th>
+                    <th>Alamat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>2012-2018</th>
+                    <th>SD K SANTA MARIA MAGELANG</th>
+                    <th>Jl. A.Yani, Kec.Magelang Utara, Kota Magelang</th>
+                </tr>
+
+                <tr>
+                    <th>2018-2021</th>
+                    <th>SMP N 2 MAGELANG</th>
+                    <th>Jl. Pierre Tendean, Kec.Magelang Utara, Kota Magelang</th>
+                </tr>
+
+                <tr>
+                    <th>2021-2024</th>
+                    <th>SMK N 1 MAGELANG</th>
+                    <th>Jl. Cawang, Kec.Magelang Selatan, Kota Magelang</th>
+                </tr>
+
+                <tr>
+                    <th>2024-Sekarang</th>
+                    <th>UNIVERSITAS SANATA DHARMA</th>
+                    <th>Jl. Paingan, Kec. Depok, Kab. Sleman</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="tugas">
+    <h1 class="text-center">TUGAS</h1>
+
+    <button onclick="tampilkanInput()" class="btn btn-primary mb-3">Jalankan Program</button>
+
+    <div id="formInput" style="display:none;">
+        <h4>Masukkan Data Anda</h4>
+
+        <div class="row mb-3">
+            <label class="col-md-3 col-form-label">Nama:</label>
+            <div class="col-md-5">
+                <input type="text" id="nama" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-md-3 col-form-label">No HP:</label>
+            <div class="col-md-5">
+                <input type="text" id="hp" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-md-3 col-form-label">Email:</label>
+            <div class="col-md-5">
+                <input type="text" id="email" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-md-3 col-form-label">Jml Bahasa:</label>
+            <div class="col-md-3">
+                <input type="number" id="jmlBahasa" class="form-control">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-md-3 col-form-label">Jml Hobi:</label>
+            <div class="col-md-3">
+                <input type="number" id="jmlHobi" class="form-control">
+            </div>
+        </div>
+
+        <button onclick="buatInput()" class="btn btn-primary">OK</button>
+    </div>
+
+    <div id="inputDinamis" class="mt-3"></div>
+    <div id="pilihanRadio" class="mt-3"></div>
+    <div id="pilihanCheckbox" class="mt-3"></div>
+    <div id="hasil" class="mt-4"></div>
+
+    <script>
+    
+    let bahasa = [];
+    let hobi = [];
+    let pilihanBahasa = "";
+    let pilihanHobi = [];
+
+    function tampilkanInput(){
+        document.getElementById("formInput").style.display = "block";
+    }
+
+    function buatInput(){
+        let nama = document.getElementById("nama").value.trim();
+        let hp = document.getElementById("hp").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let jmlBahasa = document.getElementById("jmlBahasa").value;
+        let jmlHobi = document.getElementById("jmlHobi").value;
+
+    
+        if(nama === ""){
+            alert("Nama wajib diisi!");
+            return;
+        }
+
+        if(hp === ""){
+            alert("No HP wajib diisi!");
+            return;
+        }
+
+        let regexHP = /^[0-9]{10,}$/;
+        if(!regexHP.test(hp)){
+            alert("No HP harus berupa angka dan minimal 10 digit!");
+            return;
+        }
+
+        if(email === ""){
+            alert("Email wajib diisi!");
+            return;
+        }
+
+        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!regexEmail.test(email)){
+            alert("Format email tidak valid!");
+            return;
+        }
+
+        if(jmlBahasa === "" || jmlBahasa <= 0){
+            alert("Jumlah bahasa harus lebih dari 0!");
+            return;
+        }
+
+        if(jmlHobi === "" || jmlHobi <= 0){
+            alert("Jumlah hobi harus lebih dari 0!");
+            return;
+        }
+
+        let div = document.getElementById("inputDinamis");
+        div.innerHTML = "<h4>Input Bahasa & Hobi</h4>";
+
+   
+        for(let i=1;i<=jmlBahasa;i++){
+            div.innerHTML += `
+            <div class='row mb-2'>
+                <label class='col-md-3'>Bahasa ${i}:</label>
+                <div class='col-md-5'>
+                    <input type='text' id='b${i}' class='form-control'>
+                </div>
+            </div>`;
+        }
+
+        for(let i=1;i<=jmlHobi;i++){
+            div.innerHTML += `
+            <div class='row mb-2'>
+                <label class='col-md-3'>Hobi ${i}:</label>
+                <div class='col-md-5'>
+                    <input type='text' id='h${i}' class='form-control'>
+                </div>
+            </div>`;
+        }
+
+        div.innerHTML += `<button onclick="buatPilihan()" class="btn btn-primary mt-2">OK</button>`;
+    }
+
+    function buatPilihan(){
+        let jmlBahasa = document.getElementById("jmlBahasa").value;
+        let jmlHobi = document.getElementById("jmlHobi").value;
+
+        let radioDiv = document.getElementById("pilihanRadio");
+        let checkDiv = document.getElementById("pilihanCheckbox");
+
+        radioDiv.innerHTML = "<h5>Pilihan Bahasa:</h5>";
+        checkDiv.innerHTML = "<h5>Pilihan Hobi:</h5>";
+
+        bahasa = [];
+        hobi = [];
+
+        for(let i=1;i<=jmlBahasa;i++){
+            let val = document.getElementById("b"+i).value.trim();
+
+            if(val === ""){
+                alert("Bahasa ke-" + i + " tidak boleh kosong!");
+                return;
+            }
+
+            bahasa.push(val);
+
+            radioDiv.innerHTML += `
+            <div class="form-check">
+                <input type="radio" name="bahasa" value="${val}">
+                <label>${val}</label>
+            </div>`;
+        }
+
+        for(let i=1;i<=jmlHobi;i++){
+            let val = document.getElementById("h"+i).value.trim();
+
+            if(val === ""){
+                alert("Hobi ke-" + i + " tidak boleh kosong!");
+                return;
+            }
+
+            hobi.push(val);
+
+            checkDiv.innerHTML += `
+            <div class="form-check">
+                <input type="checkbox" name="hobi" value="${val}">
+                <label>${val}</label>
+            </div>`;
+        }
+
+        checkDiv.innerHTML += `<button onclick="tampilkanHasil()" class="btn btn-primary mt-2">OK</button>`;
+    }
+
+    function tampilkanHasil(){
+        let pilihBhs = document.querySelector("input[name='bahasa']:checked");
+        let pilihHobiEl = document.querySelectorAll("input[name='hobi']:checked");
+
+        if(!pilihBhs){
+            alert("Silakan pilih 1 bahasa!");
+            return;
+        }
+
+        if(pilihHobiEl.length === 0){
+            alert("Pilih minimal 1 hobi!");
+            return;
+        }
+
+        pilihanBahasa = pilihBhs.value;
+
+        pilihanHobi = [];
+        pilihHobiEl.forEach(el => {
+            pilihanHobi.push(el.value);
+        });
+
+        let nama = document.getElementById("nama").value;
+        let email = document.getElementById("email").value;
+
+        let hasil = `Hallo, nama saya <b>${nama}</b>, email <b>${email}</b>, 
+        saya mempunyai sejumlah <b>${bahasa.length}</b> bahasa yaitu ${bahasa.join(", ")}, 
+        dan saya memilih <b>${pilihanBahasa}</b>. 
+        Saya juga mempunyai <b>${hobi.length}</b> hobi yaitu ${hobi.join(", ")}, 
+        dan saya memilih ${pilihanHobi.join(", ")}.`;
+
+        document.getElementById("hasil").innerHTML = hasil;
+    }
+
+    </script>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
